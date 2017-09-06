@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Banco de Chile</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/animate.css">
+
+	</head>
+	<body ng-controller="DatosCtrl">
+
+	<header>
+      <div class="logo">
+      </div>
+      <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li><a href="#">Link</a></li>
+		        <li><a href="#">Link</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+    </header>
+	
+	<div class="contain">
+	    <h1>
+	    	Titulo
+	    </h1>
+	    <div class="well">
+	    	<h3 class="head">
+	    		Titulo Caja
+	    	</h3>
+	    	<div class="col-md-4">
+	    		<h3>
+	    			Lorem ipsum
+	    		</h3>
+	    		<ul>
+	    			<li>
+	    				- dolor sit amet, consectetur adipiscing elit.
+	    			</li>
+	    			<li>
+	    				- dolor sit amet, consectetur adipiscing elit.
+	    			</li>
+	    			<li>
+	    				- dolor sit amet, consectetur adipiscing elit.
+	    			</li>
+	    			<li>
+	    				- Dolor sit amet, consectetur adipiscing elit.
+	    			</li>
+	    			<li>
+	    				- Dolor sit amet, consectetur adipiscing elit.
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	<div class="col-md-8">
+	    		<div class="well white-bg p-40">
+	    			<table class="table table-condensed no-border">
+					    <tbody>
+					      <tr>
+					        <td>
+					        	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit ultricies.
+					        </td>
+					        <td class="text-right">
+					        	-$2.000.000.000.000.000.000
+					        </td>
+					      </tr>
+					      <tr>
+					        <td>
+					        	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit ultricies.
+					        </td>
+					        <td class="text-right">
+					        	-$2.000.000.000.000.000.000
+					        </td>
+					      </tr>
+					    </tbody>
+					  </table>
+	    		</div>
+	    	</div>
+	    </div>
+
+	    <div class="bar" >
+	    	<h3>Total Clientes: {{totalDatos()}}<span class="glyphicons glyphicons-calendar"></span></h3>
+	    	<button id="abrir" class="right btn btn-info" data-toggle="collapse" data-target="#form">
+	    		abrir
+	    	</button>
+	    	<div id="form" class="collapse animated fadeInUp">
+		    	<div class="row">
+		    		<div class="col-md-4 col-sm-4 col-xs-12 m-v-10">
+		    			<div class="form-group input-append date form_datetime">
+						    <input type="text" class="form-control input-date" value="" placeholder="Seleccione..." readonly>
+						    <span class="add-on">
+						    	<i class="icon-th">
+		    						<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+						    	</i>
+						    </span>
+						</div>
+		    		</div>
+		    		<div class="col-md-4 col-sm-4 col-xs-12 m-v-10">
+		    			<div class="form-group input-append date form_datetime">
+						    <input type="text" class="form-control input-date" value="" placeholder="Seleccione..." readonly>
+						    <span class="add-on">
+						    	<i class="icon-th">
+		    						<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+						    	</i>
+						    </span>
+						</div>
+		    		</div>
+		    		<div class="col-md-4 col-sm-4 col-xs-12 m-v-10">
+		    			<div class="form-group">
+							<select class="form-control" id="sel1">
+								<option value="" selected disabled>Seleccione...</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+						</div>
+		    		</div>
+		    		<div class="col-md-3">
+		    			<div class="form-group">
+		    				<input type="text" name="" class="form-control" placeholder="Busqueda General...">
+		    			</div>
+		    		</div>
+		    		<div class="col-md-3">
+		    			<button class="btn btn-success">Buscar</button>
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+
+	   
+		<div class="tabla" >
+	    <table class="table table-condensed">
+		    <thead>
+		      <tr>
+		        <th></th>
+		        <th class="ghost-table">Nombre</th>
+		        <th>Apellido</th>
+		        <th>Edad</th>
+		        <th class="text-right">Monto</th>
+		        <th class="text-right">Eliminar</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="dato in datos">
+		        <td class="text-center">
+		        	<input type="checkbox" class="ghost-table" value="">
+		        </td>
+		        <td class="ghost-table">{{dato.nombre}}</td>
+		        <td>{{dato.apellido}}</td>
+		        <td>{{dato.edad}}</td>
+		        <td class="text-right">{{dato.dinero}}</td>
+		        <td class="text-right" ng-click="deleteDato(dato.nombre)">
+		        	<a href="">
+		        		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+		        	</a>
+		        </td>
+		      </tr>
+		     
+		    </tbody>
+		</table>
+		</div>
+
+		<div class="text-center">
+			<ul class="pagination">
+				<li><a href="#"><<</a></li>
+				<li><a href="#">1</a></li>
+				<li class="active"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">>></a></li>
+			</ul>
+		</div>
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/datos.js"></script>
+	<script src="js/interactions.js"></script>
+	</body>
+</html>
